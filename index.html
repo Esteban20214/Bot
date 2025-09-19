@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Poema</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Georgia, serif;
+      background-color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: #ffb6c1; /* rosa claro */
+      text-align: center;
+    }
+    #pregunta, #respuesta, #poema {
+      display: none;
+      max-width: 800px;
+      font-size: 1.2rem;
+      white-space: pre-line; /* respeta saltos de línea */
+    }
+    button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #ffb6c1;
+      color: white;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+    button:hover {
+      background-color: #ff8da1;
+    }
+  </style>
+</head>
+<body>
+  <!-- Pantalla 1 -->
+  <div id="pregunta">
+    <h1>¿Me amas?</h1>
+    <button onclick="mostrarRespuesta()">no</button>
+    <button onclick="mostrarRespuesta()">no</button>
+  </div>
+
+  <!-- Pantalla 2 -->
+  <div id="respuesta">
+    <h2>yo sí te amo :c</h2>
+    <button onclick="mostrarPoema()">bot</button>
+  </div>
+
+  <!-- Pantalla 3 -->
+  <div id="poema"></div>
+
+  <script>
+    // Mostrar primera pantalla
+    document.getElementById("pregunta").style.display = "block";
+
+    function mostrarRespuesta() {
+      document.getElementById("pregunta").style.display = "none";
+      document.getElementById("respuesta").style.display = "block";
+    }
+
+    function mostrarPoema() {
+      document.getElementById("respuesta").style.display = "none";
+      document.getElementById("poema").style.display = "block";
+      escribirPoema();
+    }
+
+    const textoPoema = `Bella doncella que con sus ojos me hace ver galaxias, universos y estrellas, en tí, encontré la perfección que en ninguna otra he encontrado, la complementación que me hace vernos como uno y la obtención de un amor que nunca estuvo en mi imaginación.
+
+El anhelo de tus besos consume mis pensamientos y, en los cimientos de nuestro amor, mis sentimientos logran surgir desvaneciendo mis lamentos con los simples movimientos de tu labios.
+
+Te amo como aquel que ama a un cantante, pues mi melodía favorita es tu risa y mi canción interminable tu voz, la cuál entra en el vacío de mi mente y se queda en mis sueños he imaginaciones.
+
+En ti, halle la paz y la tranquilidad que solo se encuentra después de la muerte, pues, tu forma de tratarme hace que mi ser se sienta en el cielo y mi alma fuera de este mundo.`;
+
+    let i = 0;
+    function escribirPoema() {
+      if (i < textoPoema.length) {
+        document.getElementById("poema").innerHTML += textoPoema.charAt(i);
+        i++;
+        setTimeout(escribirPoema, 40); // velocidad (ms)
+      }
+    }
+  </script>
+</body>
+</html>
